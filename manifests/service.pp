@@ -11,7 +11,7 @@ class confluence::service(
   file { $service_file_location:
     content => template($service_file_template),
     mode    => '0755',
-  }
+  } 
 
   if $confluence::manage_service {
     service { 'confluence':
@@ -21,7 +21,7 @@ class confluence::service(
       restart => '/etc/init.d/confluence restart',
       stop    => '/etc/init.d/confluence stop',
       status  => '/etc/init.d/confluence status',
-      require => Class['confluence::config'],
+      require => [Class['confluence::config'], File[$service_file_location]]
     }
   }
 }

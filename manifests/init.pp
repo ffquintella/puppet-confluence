@@ -70,11 +70,15 @@ class confluence (
   $webappdir    = "${installdir}/atlassian-${product}-${version}"
 
   if $::confluence_version {
+    
     # If the running version of CONFLUENCE is less than the expected version of CONFLUENCE
     # Shut it down in preparation for upgrade.
-    if versioncmp($version, $::confluence_version) > 0 {
-      notify { 'Attempting to upgrade CONFLUENCE': }
-      exec { $stop_confluence: before => Anchor['confluence::start'] }
+    if ( $::confluence_version  != undef and $::confluence_version != ''){ 
+      if versioncmp($version, $::confluence_version) > 0 {
+        notify {"Current Confluence version $::confluence_version new version $version ":}
+        notify { 'Attempting to upgrade CONFLUENCE': }
+        exec { $stop_confluence: before => Anchor['confluence::start'] }
+      }
     }
   }
 
