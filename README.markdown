@@ -1,8 +1,8 @@
-#END OF LIFE
+# END OF LIFE
 
 Since Atlassian decided to stop providing server licenses of Jira and Confluence keeping those modules no longer makes sense.
 
-#puppet-confluence
+# puppet-confluence
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/puppet/confluence.svg)](https://forge.puppetlabs.com/puppet/confluence)
 [![Build Status](https://travis-ci.org/puppet-community/puppet-confluence.svg?branch=master)](https://travis-ci.org/puppet-community/puppet-confluence)
